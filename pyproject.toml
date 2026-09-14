@@ -1,0 +1,46 @@
+[project]
+name = "lang-layers"
+version = "0.1.0"
+description = "Logit lens hooks for MLX models, in the TransformerLens style"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mlx-lm>=0.31",
+    "mlx-vlm>=0.6",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff",
+    "mypy",
+]
+tl = [
+    "transformer-lens>=3.0",
+    "torch>=2.0",
+]
+cuda = [
+    "torch>=2.0",
+    "transformers>=4.40",
+    "vllm>=0.6",
+]
+mlx = [
+    "mlx-lm>=0.31",
+    "mlx-vlm>=0.6",
+    "vllm-mlx>=0.4",
+]
+
+[project.scripts]
+lang-layers = "main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 90
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
